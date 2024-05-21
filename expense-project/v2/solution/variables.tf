@@ -3,7 +3,7 @@
 variable "common_tags" {
   type = map(any)
   default = {
-    Environment = "Dev"
+    Environment = "dev"
     Project     = "Expense"
     Terraform   = true
   }

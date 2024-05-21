@@ -5,7 +5,7 @@
 
 ## Tasks
 
-- Create 3 EC2 Instances along with Security Groups allowing all (manually)
+- Create 3 EC2 Instances along with Security Groups allowing ssh (manually)
 - Use variables along with type and description to replace all hardcoded values
 - Try not providing default argument in variables
 - Use terraform.tfvars and some-name.vars (with -var-file) to override some default values
