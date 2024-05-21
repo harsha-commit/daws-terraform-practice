@@ -1,6 +1,7 @@
-data "aws_ami" "aws_ami_id" {
-  owners      = ["973714476881"]
+data "aws_ami" "id" {
+
   most_recent = true
+  owners      = ["973714476881"]
 
   filter {
     name   = "name"
@@ -18,6 +19,8 @@ data "aws_ami" "aws_ami_id" {
   }
 }
 
-data "aws_vpc" "default" {
-  default = true
+data "aws_route53_zone" "details" {
+  name         = "harshadevops.site"
+  private_zone = false
 }
+

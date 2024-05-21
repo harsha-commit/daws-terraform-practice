@@ -1,3 +1,7 @@
+## Note
+
+- Destroy all resources after completion
+
 ## Concepts Covered
 
 - Count
