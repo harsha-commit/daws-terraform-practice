@@ -78,6 +78,5 @@ variable "sg_inbound_rules" {
       allowed_cidr = ["0.0.0.0/0"]
       protocol     = "tcp"
     },
-
   ]
 }
