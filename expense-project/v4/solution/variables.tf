@@ -24,64 +24,61 @@ variable "ec2_instance_type" {
   description = "Instance Type of AWS EC2 Instance"
 }
 
-variable "ec2_instance_names" {
+variable "ec2_instance_names_list" {
   type    = list(string)
   default = ["db", "backend", "frontend"]
+}
+
+variable "ec2_instance_names_map" {
+  type = map(string)
+  default = {
+    "db"       = "t2.small"
+    "backend"  = "t2.micro"
+    "frontend" = "t2.micro"
+  }
 }
 
 ### aws_security_group variables ###
 
 variable "sg_name" {
   type    = string
-  default = "allow_ssh"
+  default = "allow_ports"
 }
 
 variable "sg_description" {
   type    = string
-  default = "Allow SSH inbound traffic and all outbound traffic"
-}
-
-variable "sg_ingress_from_port" {
-  type    = number
-  default = 22
-}
-
-variable "sg_ingress_to_port" {
-  type    = number
-  default = 22
-}
-
-variable "sg_egress_from_port" {
-  type    = number
-  default = 22
-}
-
-variable "sg_egress_to_port" {
-  type    = number
-  default = 22
-}
-
-variable "sg_ingress_protocol" {
-  type    = string
-  default = "tcp"
-}
-
-variable "sg_egress_protocol" {
-  type    = string
-  default = "tcp"
-}
-
-variable "sg_ingress_cidr_blocks" {
-  type    = list(string)
-  default = ["0.0.0.0/0"]
-}
-
-variable "sg_egress_cidr_blocks" {
-  type    = list(string)
-  default = ["0.0.0.0/0"]
+  default = "Allow ports 22, 80, 8080, 3306 inbound traffic and all outbound traffic"
 }
 
 variable "sg_module" {
   type    = string
   default = "sg"
+}
+
+
+variable "sg_inbound_rules" {
+  type = list(any)
+  default = [
+    {
+      port         = 22
+      allowed_cidr = ["0.0.0.0/0"]
+      protocol     = "tcp"
+    },
+    {
+      port         = 80
+      allowed_cidr = ["0.0.0.0/0"]
+      protocol     = "tcp"
+    },
+    {
+      port         = 8080
+      allowed_cidr = ["0.0.0.0/0"]
+      protocol     = "tcp"
+    },
+    {
+      port         = 3306
+      allowed_cidr = ["0.0.0.0/0"]
+      protocol     = "tcp"
+    },
+
+  ]
 }
