@@ -1,0 +1,3 @@
+- Create seperate directories for each environment
+- In each directory
+  - create a backend.tf that has arguments with values for s3 backend

@@ -2,15 +2,17 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.50.0"
+      version = "~> 5.0"
     }
   }
+
   backend "s3" {
-    bucket         = "harshadevops-dev"
-    key            = "harshadevops-dev-v4"
+    bucket         = "harshadevops-practice"
+    key            = "harshadevops-practice-v4"
     region         = "us-east-1"
-    dynamodb_table = "harshadevops-dev"
+    dynamodb_table = "harshadevops"
   }
+
 }
 
 provider "aws" {
