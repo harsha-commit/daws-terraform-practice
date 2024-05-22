@@ -55,7 +55,6 @@ variable "sg_module" {
   default = "sg"
 }
 
-
 variable "sg_inbound_rules" {
   type = list(any)
   default = [
