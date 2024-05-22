@@ -1,7 +1,7 @@
 - Create Multiple Environments using
+
   - tfvars
   - workspaces
-  - Provisioners
   - Expected Naming Convention
     - db-dev, backend-dev, frontend-dev
     - db-prod, backend-prod, frontend-dev
@@ -11,3 +11,10 @@
     - db-prod.harshadevops.online
     - backend-prod.harshadevops.online
     - harshadevops.online
+
+- Store Private IP Addresses of EC2 Instances in a file using Provisioners
+
+  - Use local_exec to get the addresses
+  - Use remote_exec
+
+- Provisioners only run at creation time
