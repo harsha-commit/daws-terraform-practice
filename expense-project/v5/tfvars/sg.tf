@@ -1,23 +1,28 @@
-resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh"
-  description = "Allow SSH inbound traffic and all outbound traffic"
+# resource "aws_security_group" "allow_ports" {
+#   name        = var.sg_name
+#   description = var.sg_description
 
-  ingress {
-    from_port   = var.sg_ingress_from_port
-    to_port     = var.sg_ingress_to_port
-    protocol    = var.sg_ingress_protocol
-    cidr_blocks = var.sg_ingress_cidr_blocks
-  }
+#   dynamic "ingress" {
 
-  egress {
-    from_port   = var.sg_egress_from_port
-    to_port     = var.sg_egress_to_port
-    protocol    = var.sg_egress_protocol
-    cidr_blocks = var.sg_egress_cidr_blocks
-  }
+#     for_each = var.sg_inbound_rules
 
-  tags = merge(var.common_tags, {
-    Name   = var.sg_name
-    Module = var.sg_module
-  })
-}
+#     content {
+#       from_port   = ingress.value["port"]
+#       to_port     = ingress.value["port"]
+#       protocol    = ingress.value["protocol"]
+#       cidr_blocks = ingress.value["allowed_cidr"]
+#     }
+#   }
+
+#   egress {
+#     from_port   = "0"
+#     to_port     = "0"
+#     protocol    = "tcp"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
+
+#   tags = merge(var.common_tags, {
+#     Name   = var.sg_name
+#     Module = var.sg_module
+#   })
+# }

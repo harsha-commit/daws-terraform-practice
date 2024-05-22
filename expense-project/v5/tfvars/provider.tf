@@ -5,7 +5,12 @@ terraform {
       version = "~> 5.0"
     }
   }
+
   backend "s3" {
+    bucket         = "harshadevops-practice"
+    key            = "harshadevops-practice-v4"
+    region         = "us-east-1"
+    dynamodb_table = "harshadevops"
   }
 
 }

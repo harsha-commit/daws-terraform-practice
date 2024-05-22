@@ -1,3 +1,13 @@
 - Create seperate directories for each environment
 - In each directory
   - create a backend.tf that has arguments with values for s3 backend
+  - create {env_name}.tfvars to overwrite the variables as per the environment
+- In main directory
+  - Remove defaults values of variables that should be determined by environment
+    - Eg: instance_names, instance_types, sg variables, the "environment" variable, etc
+  - Run
+    - terraform init --help
+    - terraform init -backend-config=dev/backend.tf
+    - terraform plan -var-file=dev/dev.tfvars
+    - terraform apply -var-file=dev/dev.tfvars -auto-approve
+    - terraform destroy -var-file=dev/dev.tfvars -auto-approve
