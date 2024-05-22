@@ -1,5 +1,6 @@
 - Create Multiple Environments using
   - tfvars
+  - workspaces
   - Provisioners
   - Expected Naming Convention
     - db-dev, backend-dev, frontend-dev

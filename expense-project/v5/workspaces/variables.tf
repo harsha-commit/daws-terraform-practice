@@ -1,17 +1,54 @@
-variable "ami" {
+### Project Level Variables ###
+
+variable "environment" {
+  default = "dev"
+}
+
+variable "common_tags" {
+  type = map(any)
+  default = {
+    Project   = "Expense"
+    Terraform = true
+  }
+  description = "Common Tags for Expense Project"
+}
+
+### aws_instance variables ###
+
+variable "ec2_ami_id" {
   type        = string
   default     = "ami-090252cbe067a9e58"
-  description = "AMI ID of Community RHEL"
+  description = "AMI ID of RHEL-9-DevOps-Practice AMI"
 }
 
-variable "instance_type" {
-  default = {
-    dev  = "t2.micro"
-    prod = "t2.small"
-  }
+variable "ec2_instance_names_list" {
+  type    = list(string)
+  default = ["db", "backend", "frontend"]
 }
 
-variable "inbound_rules" {
+variable "ec2_instance_names_map" {
+  type    = map(any)
+  default = {}
+}
+
+### aws_security_group variables ###
+
+variable "sg_name" {
+  type    = string
+  default = "allow_ports"
+}
+
+variable "sg_description" {
+  type    = string
+  default = "Allow ports 22, 80, 8080, 3306 inbound traffic and all outbound traffic"
+}
+
+variable "sg_module" {
+  type    = string
+  default = "sg"
+}
+
+variable "sg_inbound_rules" {
   type = list(any)
   default = [
     {
