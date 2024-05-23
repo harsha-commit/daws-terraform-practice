@@ -1,0 +1,6 @@
+- Similar to concept of variables and overriding
+- Write main file
+  - For optional variables, give empty value (can be overriden by module user)
+- In test file
+  - Override desired variables (Required + Optional)
+  - Catching outputs is done via outputs of module (not directly)
