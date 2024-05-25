@@ -163,3 +163,11 @@ resource "aws_route_table_association" "database" {
   subnet_id      = element(aws_subnet.database[*].id, count.index) # aws_subnet.database[count.index].id
   route_table_id = aws_route_table.database.id
 }
+
+resource "aws_db_subnet_group" "main" {
+  subnet_ids = aws_subnet.database[*].id
+
+  tags = merge(var.common_tags, var.db_subnet_group_tags, {
+    Name = "${local.resource_name}-db-subnet-group"
+  })
+}

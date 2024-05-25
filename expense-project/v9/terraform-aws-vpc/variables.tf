@@ -106,3 +106,24 @@ variable "private_route_table_tags" {
 variable "database_route_table_tags" {
   default = {}
 }
+
+### VPC Peering Variables ###
+
+variable "is_peering_required" {
+  type = bool
+}
+
+variable "target_vpc_id" {
+  type    = string
+  default = ""
+}
+
+variable "vpc_peering_connection_tags" {
+  type    = map(string)
+  default = {}
+}
+
+variable "db_subnet_group_tags" {
+  type    = map(string)
+  default = {}
+}

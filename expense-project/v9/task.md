@@ -1,4 +1,4 @@
-- Create Elastic IP
-- Create NAT Gateway in Public subnet (one subnet is enough for demo)
-- Create route table for each subnet and attach to subnets
-  - Public points to 0.0.0.0/o via IGW
+- Create peering, only if user needs it
+- If user selects peering required and doesn't give target vpc id, then choose default vpc
+- Use auto accept (for same accounts, for demo) for accepting default vpc
+- DB Subnet group
