@@ -1,4 +1,3 @@
-- Create Elastic IP
-- Create NAT Gateway in Public subnet (one subnet is enough for demo)
 - Create route table for each subnet and attach to subnets
   - Public points to 0.0.0.0/o via IGW
+- Create NAT Gateway in Public subnet (one subnet is enough for demo), Attach Elastic IP
