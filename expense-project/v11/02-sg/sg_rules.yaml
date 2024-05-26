@@ -1,0 +1,51 @@
+- name: SG Rules
+  sg:
+    - expense-dev-db
+    - expense-dev-backend
+    - expense-dev-frontend
+    - expense-dev-bastion
+  db:
+    - name: db_backend
+      desc: DB accepting connections from Backend
+      source: backend
+      port: 3306
+    - name: db_bastion
+      desc: DB accepting connnections from Bastion
+      source: bastion
+      port: 3306 # 22 is not allowed by RDS
+  backend:
+    - name: backend_frontend
+      desc: Backend accepting connnections from Frontend
+      source: frontend
+      port: 8080
+    - name: backend_bastion
+      desc: Backend accepting connnections from Bastion
+      source: bastion
+      port: 22
+    - name: backend_ansible
+      desc: Backend accepting connnections from Ansible
+      source: ansible
+      port: 22
+  frontend:
+    - name: frontend_public
+      desc: Frontend accepting connnections from Public
+      source: public
+      port: 80
+    - name: frontend_bastion
+      desc: Frontend accepting connnections from Bastion
+      source: bastion
+      port: 22
+    - name: frontend_ansible
+      desc: Frontend accepting connnections from Ansible
+      source: ansible
+      port: 22
+   bastion:
+    - name: bastion_public
+      desc: Bastion accepting connnections from Public
+      source: public # Ideally your home IP Address/32
+      port: 22
+  ansible:
+    - name: ansible_public
+      desc: Ansible accepting connnections from Public
+      source: public # Ideally your home IP Address/32
+      port: 22
